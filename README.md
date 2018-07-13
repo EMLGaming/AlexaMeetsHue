@@ -86,9 +86,9 @@ If you have done every step correctly you should not get an error. Scroll up unt
 
 * Go to your [Amazon developer console](https://developer.amazon.com/alexa/console/ask). 
 * Add new skill and call it AlexaMeetsHue. 
-* Set language to english (us).
-* Chose custom skill. 
-* Goto JSON Editor under Interaction model and drag the alexa.json file in there.
+* Set language to english (us). (this is the most tested and stable)
+* Chose custom skill. (this gives us more custumization)
+* Goto JSON Editor under Interaction model and drag the alexa.json file in there. (if you want to add more utterences feel free to do so)
 * Now press the save button and then the build button.
 
 * Go to endpoint. 
@@ -109,7 +109,7 @@ If you are loged in with the same amazon account you used for building the alexa
 ## Changes I would make if I was going to publish
 
 * Get the alexa app approved by amazon. This eleminates the process of you having to create the alexa app and manually add the json file.<br>
-* Add more samples to make the process if calling the functions more natural. I would use beta testers to get all the samples since I don't know what users mights want to say to trigger all the functions. <br>
+* Add more utterences to make the process if calling the functions more natural. I would use beta testers to get all the samples since I don't know what users mights want to say to trigger all the functions. <br>
 * Extensivly test this app on stability <br>
 * Create a webserver to automate the process of getting the access token and automaticly use it in your application. <br>
 * Get the refresh token to work, after 7 days your access token will expire and thus break the application. I wasn't able to implement the refresh token refreshing the access token after 7 days due to a mistake phillips made implementing the digest authentication. I am able to get the refresh and access token to work when I downgrade to basic authentication but then I put the user data at risk so I have decided to not do that. <br>
@@ -118,6 +118,12 @@ If you are loged in with the same amazon account you used for building the alexa
 
 When everything is setup properly you should be able to give voice commands to your Amazon Alexa device. To test say "Alexa, tell lights to turn on."<br> 
 For a full list of commands go to [commandlist.txt](commandlist.txt).
+
+## Documentation
+
+* [Amazon Developer Docs](https://developer.amazon.com/documentation)
+* [Phillips Developer Docs](https://developers.meethue.com/philips-hue-api)
+* [StdLib Docs](https://docs.stdlib.com/main/#/introduction)
 
 ## License
 

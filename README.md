@@ -3,21 +3,17 @@
 By EMLGaming
 with very very big thanks to Jaap and Sahan for this awsome internship.
 
-## TODO:
+## Demo
 
-finish this readme<br>
-work properly<br>
-guide to get the env.json<br>
-make video <br>
-description: "My program allowes the user to use voice commands using Amazon Alexa to control your philips hue lights."<br>
+link to youtube video<br>
 
 ## Disclaimer
 
-**I made this project in one week at my great intership. For functionality I don't recommend using this code since there is already the official alexa app for controlling your phillips hue lights.**
+**I made this project in one week at my great intership. For functionality I don't recommend using this code since there is already the official alexa app for controlling your phillips hue lights. My app does have some funny easter eggs though.** This might look like very little code for a whole week but that is the art off clean coding. :smirk:
 
 ## Description
 
-My program allowes the user to use voice commands (for Amazon Alexa) to control your philips hue lights.
+My program allowes the user to use voice commands (with Amazon Alexa) to control your philips hue lights.
 
 ## Installation
 
@@ -31,66 +27,92 @@ My program allowes the user to use voice commands (for Amazon Alexa) to control 
 **Get your access token:** 
 
 You use this access token to controll your phillips hue lights from a public ip.<br>
-edit accestoken.sh (use whatever text editor you like) <br>
+
+Edit accestoken.sh (use whatever text editor you like) <br>
 Add your clientid and clientsecret. <br> 
-you get this from https://developers.meethue.com/ when you are logged in **step by step how to get this**
-now save the file <br>
+You get these from [Phillips hue developer account](https://developers.meethue.com/) when you are logged in and create an app. When creating the app it doesn't matter what name and callback url you give it. <br>
+Now save the file, give it permissions to execute and run it. <br>
 ```
 chmod +x get accestoken.sh
 ./accestoken.sh
 ```
 Follow the steps in the bash file exactly. <br>
+
 You should now have the access token. <br>
 
 **Edit env.json:**
 
-Edit the env.json file and add your access token in the empty quotes. <br>
+Edit the env.json file and add your access token and philips API username in the empty quotes. <br>
 
-guide to get your username (the thingy you putt in the url of hue thingy)
+[GUIDE](https://developers.meethue.com/documentation/configuration-api) to get your philips API username.
 
 
 **Setup the endpoint:**
 
-stdlib make it work
-```npm install lib.cli -g```
-```lib init```
-```lib create -t alexa```
-```cd <username>/alexa/```
-```npm install node-fetch --save```
-replace the files (intents, changelight.js, env.json)
-```lib up dev```
-scroll up to default function and copy that url as your endpoint in alexa
+For this I used StdLib. In would have rather used the recommended AWS lambda but I don't have a credit card to link so I had to go for a third party option. <br>
+
+Make sure you have Node.js installed.
+For installing StdLib type:
+```
+npm install lib.cli -g
+```
+Now we create a workspace by typing:
+```
+lib init
+```
+Create a service with an Alexa template by typing:
+```
+lib create -t alexa
+```
+Change directory by typing:
+```
+cd <StdLib username>/alexa/
+```
+Install node-fetch for making requests to your hue lights:
+```
+npm install node-fetch --save
+```
+Move the Intents from this github repo into your /alexa/function/intents folder. <br>
+Remove the Standard env.json file in the /alexa folder. <br>
+Move the ChangeLight.js and env.json (you should have edited the env.json file at the last step) file into the /alexa folder. <br>
+
+To deploy your functions type:
+```
+lib up dev
+```
+If you have done every step correctly you should not get an error. Scroll up untill you see (default function). Copy that URL (example https://<username>.lib.id/alexa@dev/) and set that as your alexa endpoint (next step).
 
 **Create your alexa skill:**
 
-add new skill call it AlexaMeetsHue
-set language to english (us)
-chose custom **add why**
-goto JSON Editor under Interaction model and drag the alexa.json file in there
-press the save button
-then press the build button
-goto endpoint
-chose HTTPS
-put the link you got from above in your default regoin section
-click select ssl certificate and use My development endpoint is a sub-domain of a domain that has a wildcard certificate from a certificate authority
-now press save endpoint
-goto test section
-enable test for skill under test section
-type "ask lights to dance"
-the lights should now start looping though all colors
+* Go to your [Amazon developer console](https://developer.amazon.com/alexa/console/ask). 
+* Add new skill and call it AlexaMeetsHue. 
+* Set language to english (us).
+* Chose custom skill. 
+* Goto JSON Editor under Interaction model and drag the alexa.json file in there.
+* Now press the save button and then the build button.
 
-to now use this with your actual alexa enabled device:
-if you are loged in with the same amazon account you used for building the alexa app and your actual device you should be able to give the command to alexa and they should work.
+* Go to endpoint. 
+* Chose HTTPS. 
+* Paste the link you got from the above step in your default regoin section. (example https://<username>.lib.id/alexa@dev/) <br>
+* Click select ssl certificate and use: ```My development endpoint is a sub-domain of a domain that has a wildcard certificate from a certificate authority.```
+* Press the save endpoint button.
 
-done
+* Go to test section.
+* Enable test for this skill. 
+* Type "ask lights to dance" .
+* The lights should now start looping though all colors.
+
+**Use this skill on your actuall amazon enabled device:**
+
+If you are loged in with the same amazon account you used for building the alexa app and your actual device you are good to go. If now log in with the same account on your device. Download the Amazon Alexa app and follow the instructions on screen. 
 
 ## Changes I would make if I was going to publish
 
 * Get the alexa app approved by amazon. This eleminates the process of you having to create the alexa app and manually add the json file.<br>
 * Add more samples to make the process if calling the functions more natural. I would use beta testers to get all the samples since I don't know what users mights want to say to trigger all the functions. <br>
 * Extensivly test this app on stability <br>
-* Make a webserver to automate the process of getting the acces token and automaticly use it in your application. <br>
-* Get the refresh token to work after 7 days so that the application keeps working after the token has expired. <br>
+* Create a webserver to automate the process of getting the access token and automaticly use it in your application. <br>
+* Get the refresh token to work, after 7 days your access token will expire and thus break the application. I wasn't able to implement the refresh token refreshing the access token after 7 days due to a mistake phillips made implementing the digest authentication. I am able to get the refresh and access token to work when I downgrade to basic authentication but then I put the user data at risk so I have decided to not do that. <br>
 
 ## Usage
 

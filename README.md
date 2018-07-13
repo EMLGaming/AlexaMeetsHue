@@ -5,11 +5,11 @@ with very very big thanks to Jaap and Sahan for this awsome internship.
 
 ## Demo
 
-link to youtube video<br>
+[DEMO VIDEO](https://youtu.be/_atVcVDo52o)<br>
 
 ## Disclaimer
 
-**I made this project in one week at my great intership. For functionality I don't recommend using this code since there is already the official alexa app for controlling your phillips hue lights. My app does have some funny easter eggs though.** This might look like very little code for a whole week but that is the art off clean coding. :smirk:
+**I made this project in one week at my great intership. For pure functionality I don't recommend using this code since there is already the official alexa app for controlling your phillips hue lights. My app does have some funny easter eggs though.** This might look like very little code for a whole week but that is the art off clean coding. :smirk:
 
 ## Description
 

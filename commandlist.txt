@@ -1,0 +1,44 @@
+these are all the command I added:
+
+Alexa, 
+
+tell lights to 
+ask lights to 
+
+turn on:
+turn on 
+switch on
+
+turn off:
+switch off
+turn off
+
+brightness down:
+turn on mood lighting
+turn brightness down
+this is to bright
+this is way to bright
+this is hurting my eyes
+dimm
+
+brightness up:
+turn off mood lighting
+turn brightness up
+brighten the room
+I can't see anything
+give me the light
+
+color:
+turn <color>
+
+colorloop effect:
+dance
+turn on RGB
+loop though all colors
+
+stop colorloop effect:
+stop dancing
+stop colorloop
+turn this RGB madness down
+stop looping though all colors
+

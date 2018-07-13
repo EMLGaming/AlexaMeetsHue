@@ -1,0 +1,96 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "lights",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "ChangeLightStateON",
+                    "slots": [],
+                    "samples": [
+                        "turn on",
+                        "switch on"
+                    ]
+                },
+                {
+                    "name": "ChangeLightStateOFF",
+                    "slots": [],
+                    "samples": [
+                        "switch off",
+                        "turn off"
+                    ]
+                },
+                {
+                    "name": "ChangeLightBriDOWN",
+                    "slots": [],
+                    "samples": [
+                        "turn on mood lighting",
+                        "turn brightness down",
+                        "this is to bright",
+                        "this is way to bright",
+                        "this is hurting my eyes",
+                        "dimm"
+                    ]
+                },
+                {
+                    "name": "ChangeLightBriUP",
+                    "slots": [],
+                    "samples": [
+                        "turn brightness up",
+                        "turn off mood lighting",
+                        "brighten the room",
+                        "I can't see anything",
+                        "give me the light"
+                    ]
+                },
+                {
+                    "name": "ChangeLightEffectON",
+                    "slots": [],
+                    "samples": [
+                        "loop though all colors",
+                        "turn on RGB",
+                        "dance"
+                    ]
+                },
+                {
+                    "name": "ChangeLightColor",
+                    "slots": [
+                        {
+                            "name": "color",
+                            "type": "AMAZON.Color"
+                        }
+                    ],
+                    "samples": [
+                        "turn {color}"
+                    ]
+                },
+                {
+                    "name": "ChangeLightEffectOFF",
+                    "slots": [],
+                    "samples": [
+                        "stop looping though all colors",
+                        "stop dancing",
+                        "stop colorloop",
+                        "turn this RGB madness down"
+                    ]
+                }
+            ],
+            "types": []
+        }
+    }
+}

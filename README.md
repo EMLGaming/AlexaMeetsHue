@@ -1,49 +1,55 @@
 # AlexaMeetsHue
-------------
+
 By EMLGaming
-with very very big thanks to Jaap and Sahan
+with very very big thanks to Jaap and Sahan for this awsome internship.
 
-# TODO:
+## TODO:
 
-finish this readme
-work properly
-gitignore node modules and env.json and getaccestokenprivate.sh
-make all the links work properly in readme
-guide to get the env.json
-add license
-make video 
-publish github reamde
+finish this readme<br>
+work properly<br>
+guide to get the env.json<br>
+make video <br>
+description: "My program allowes the user to use voice commands using Amazon Alexa to control your philips hue lights."<br>
 
-# Disclaimer
-**I made this project in one week at my great intership at q42. For functionality I don't recommend using this code since there is already the official alexa app for controlling your phillips hue lights. And I didn't fully beta test this.**
+## Disclaimer
 
-# Description
-My program allowes you to use voice commands using Amazon Alexa to control your philips hue lights.
+**I made this project in one week at my great intership. For functionality I don't recommend using this code since there is already the official alexa app for controlling your phillips hue lights.**
 
-# Installation
-Prerequisets:
-if you don't have these make then all before you begin
-https://account.meethue.com/account account
-https://developers.meethue.com/ account (hard to get)
-https://stdlib.com/ account
-https://developer.amazon.com account
+## Description
 
+My program allowes the user to use voice commands (for Amazon Alexa) to control your philips hue lights.
 
-order you should do everything:
+## Installation
 
-first get token:
+**Prerequisets:**
+
+* [Phillips hue account](https://account.meethue.com/account)<br>
+* [Phillips hue developer account](https://developers.meethue.com/) This account is very hard to get if you are not partnered with phillips. You have to get verified by phillips before you get your account and that process mights take weeks.<br>
+* [StdLib account](https://stdlib.com/) This is for hosting the functions alexa calls I would recommend using the recommended AWS lambda but I don't have a credit card to link. If you follow this guide exactly it is 100% free and gives the same functionality as AWS lambda.<br>
+* [amazon devloper account](https://developer.amazon.com)<br>
+
+**Get your access token:** 
+
+You use this access token to controll your phillips hue lights from a public ip.<br>
+edit accestoken.sh (use whatever text editor you like) <br>
+Add your clientid and clientsecret. <br> 
+you get this from https://developers.meethue.com/ when you are logged in **step by step how to get this**
+now save the file <br>
+```
 chmod +x get accestoken.sh
-edit accestoken.sh
-add your clientsecret and clientid you get this from https://developers.meethue.com/ when you are logged in **step by step how to get this**
-now save the file and run by typing 
 ./accestoken.sh
-follow the steps very preciecely
+```
+Follow the steps in the bash file exactly. <br>
+You should now have the access token. <br>
 
-how you should have the acces token
+**Edit env.json:**
+
+Edit the env.json file and add your access token in the empty quotes. <br>
 
 guide to get your username (the thingy you putt in the url of hue thingy)
 
-add this access token to you env.json
+
+**Setup the endpoint:**
 
 stdlib make it work
 ```npm install lib.cli -g```
@@ -54,6 +60,8 @@ stdlib make it work
 replace the files (intents, changelight.js, env.json)
 ```lib up dev```
 scroll up to default function and copy that url as your endpoint in alexa
+
+**Create your alexa skill:**
 
 add new skill call it AlexaMeetsHue
 set language to english (us)
@@ -76,22 +84,19 @@ if you are loged in with the same amazon account you used for building the alexa
 
 done
 
-# This I would have changed if I was going to publish this
-alexa app approved by amazon
-so you don't have to do all of this but this will be done for you
-make the token process automatic
-add more samples (use beta testers to get all the samples)
-get everything tested properly
+## Changes I would make if I was going to publish
 
-after 7 days your access token will expire so you will have to do that part again. That is because I wan't able to get up automatic refreshing of the token. This is due to phillips implementing the digest authentication wrong. I can however use basic authentication and make it refresh automaticly but then your private phillips details would have not been encrypted
+* Get the alexa app approved by amazon. This eleminates the process of you having to create the alexa app and manually add the json file.<br>
+* Add more samples to make the process if calling the functions more natural. I would use beta testers to get all the samples since I don't know what users mights want to say to trigger all the functions. <br>
+* Extensivly test this app on stability <br>
+* Make a webserver to automate the process of getting the acces token and automaticly use it in your application. <br>
+* Get the refresh token to work after 7 days so that the application keeps working after the token has expired. <br>
 
-# Usage
-When everything is setup properly you should be able to give voice commands to your Amazon Alexa device. To test say "Alexa, tell lights to turn on." This should turn on your lights if you have setup everything properly. For a full list of commands go to commandlist.txt.
+## Usage
 
-https://developers.meethue.com/philips-hue-api
-Philips thinks it should be YOU who profits from your work. What you produce you own and are free to give away or sell. That also means that everything connected with use of your product is your responsibility. Philips will not accept liability if your product causes harm. It is also entirely up to you whether and on what terms to commercialize your product.
-Just as “what is yours is yours”, “what is ours is ours”. The software, trademarks documentation, and any other materials we provide to help you develop hue apps, including especially the interface specifications “API” belong to Philips. It may happen that working on an app suggests an idea to you for an improvement in the API or our materials. If you suggest any improvements to us and we adopt them, they become part of the platform used by everyone, and belong to us.
+When everything is setup properly you should be able to give voice commands to your Amazon Alexa device. To test say "Alexa, tell lights to turn on."<br> 
+For a full list of commands go to [commandlist.txt](commandlist.txt).
 
+## License
 
-
-need to complain about the documentation since it is horrible
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
